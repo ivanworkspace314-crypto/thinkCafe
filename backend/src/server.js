@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path'; 
+import { fileURLToPath } from 'url';
 import rateLimiter from './middleware/rateLimiter.js';
 import notesRoutes from './routes/notesRoutes.js';
 import { connectDB } from './config/db.js';
@@ -11,7 +12,8 @@ dotenv.config();
 
 const PORT=process.env.PORT||5001;
 const app=express();
-const __dirname=path.resolve()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 //middlewares
