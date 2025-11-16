@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import api from '../../lib/axios'
 import NavBar from '../components/NavBar'
 import NoteBoard from '../components/NoteBoard'
 
@@ -12,7 +12,7 @@ const HomePage = () => {
     const fetchNotes = async () => {
       try {
         setLoading(true)
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/notes`)
+        const response = await api.get('/notes')
         setNotes(response.data)
         setError(null)
       } catch (err) {

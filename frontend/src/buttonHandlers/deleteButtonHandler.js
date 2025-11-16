@@ -1,10 +1,10 @@
-import axios from 'axios'
+import api from '../../lib/axios'
 
 export const deleteButtonHandler = async (id, navigate) => {
   console.log("DeleteButton is clicked")
   console.log(`id: ${id}`)
   try {
-    const response = await axios.delete(`${import.meta.env.VITE_API_URL}/api/notes/${id}`)
+    const response = await api.delete(`/notes/${id}`)
     console.log('Note deleted successfully:', response.data)
     
     // If already on home page, refresh; otherwise redirect

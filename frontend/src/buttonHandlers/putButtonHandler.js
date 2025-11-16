@@ -1,10 +1,10 @@
-import axios from 'axios'
+import api from '../../lib/axios'
 
 export const putButtonHandler = async (id, titleInput, contentInput, navigate) => {
   console.log("PutButton is clicked")
   
   try {
-    const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/notes/${id}`, {
+    const response = await api.put(`/notes/${id}`, {
       title: titleInput,
       content: contentInput
     })

@@ -1,10 +1,10 @@
-import axios from 'axios'
+import api from '../../lib/axios'
 
 export const createButtonHandler = async (titleInput, contentInput, navigate) => {
   console.log("CreateButton is clicked")
   
   try {
-    const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/notes`, {
+    const response = await api.post('/notes', {
       title: titleInput,
       content: contentInput
     })

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router'
-import axios from 'axios'
+import api from '../../lib/axios'
 import PageHeader from '../components/PageHeader'
 import FormField from '../components/FormField'
 import Button from '../components/Buttons/Button'
@@ -18,7 +18,7 @@ const CreatePage = (props) => {
       const fetchNoteDetails = async () => {
         try {
           setLoading(true)
-          const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/notes/${props.noteId}`)
+          const response = await api.get(`/notes/${props.noteId}`)
           const { title, content } = response.data
           setTitleInput(title)
           setContentInput(content)
