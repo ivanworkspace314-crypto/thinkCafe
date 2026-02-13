@@ -3,7 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path'; 
 import { fileURLToPath } from 'url';
-import rateLimiter from './middleware/rateLimiter.js';
 import notesRoutes from './routes/notesRoutes.js';
 import { connectDB } from './config/db.js';
 
@@ -29,7 +28,6 @@ app.use((req,res,next)=>{
   console.log("request url is ", req.url)
   next()
 })
-app.use(rateLimiter);
 app.use('/api/notes',notesRoutes); 
 if(process.env.NODE_ENV==="production"){
   app.use(express.static(path.join(__dirname,'../../frontend/dist')))
